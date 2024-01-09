@@ -7,7 +7,9 @@ https://railsguides.jp/getting_started.html
 
 `rails webpacker:install`
 
-`rails s`
+`rails s -b 0.0.0.0`
+
+-b 0.0.0.0 がないとコンテナ外からアクセスできない
 
 
 
