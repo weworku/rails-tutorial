@@ -4,3 +4,24 @@
   <li><%= link_to 'Edit', edit_article_path(@article) %></li>
   <li><%= link_to 'Destroy', article_path(@article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></li>
 </ul>
+
+<h2>Comments:</h2>
+<ul>
+  <% @article.comments.each do |comment| %>
+    <li><%= comment.commenter %>: <%= comment.body %></li>
+  <% end %>
+</ul>
+
+
+<h2>Add a comment:</h2>
+<%= form_with(model: Comment.new, url: article_comments_path(@article)) do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <%= form.submit 'Add Comment' %>
+<% end %>
