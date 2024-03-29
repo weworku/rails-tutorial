@@ -14,14 +14,4 @@
 
 
 <h2>Add a comment:</h2>
-<%= form_with(model: Comment.new, url: article_comments_path(@article)) do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <%= form.submit 'Add Comment' %>
-<% end %>
+<%= render 'comments/form' %>
