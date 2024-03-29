@@ -8,9 +8,17 @@
 <h2>Comments:</h2>
 <ul>
   <% @article.comments.each do |comment| %>
-    <li><%= comment.commenter %>: <%= comment.body %></li>
+    <li>
+      <%= comment.commenter %>: <%= comment.body %>
+      <%= link_to 'X', article_comment_path(@article, comment), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    </li>
   <% end %>
 </ul>
+
+<% if notice.present? %>
+  <h2>Notice:</h2>
+  <%= notice %>
+<% end %>
 
 
 <h2>Add a comment:</h2>
